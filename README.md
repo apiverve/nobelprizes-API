@@ -1,5 +1,4 @@
-Nobel Prizes API
-============
+# Nobel Prizes API
 
 Nobel Prizes is a simple tool for getting information on Nobel Prizes. It returns information on various Nobel Prizes.
 
@@ -7,57 +6,65 @@ Nobel Prizes is a simple tool for getting information on Nobel Prizes. It return
 ![Code Climate](https://img.shields.io/badge/maintainability-B-purple)
 ![Prod Ready](https://img.shields.io/badge/production-ready-blue)
 
-This is a Javascript Wrapper for the [Nobel Prizes API](https://apiverve.com/marketplace/api/nobelprizes)
+This is a Javascript Wrapper for the [Nobel Prizes API](https://apiverve.com/marketplace/nobelprizes)
 
 ---
 
 ## Installation
-	npm install @apiverve/nobelprizes --save
+
+Using npm:
+```shell
+npm install @apiverve/nobelprizes
+```
+
+Using yarn:
+```shell
+yarn add @apiverve/nobelprizes
+```
 
 ---
 
 ## Configuration
 
-Before using the nobelprizes API client, you have to setup your account and obtain your API Key.  
+Before using the Nobel Prizes API client, you have to setup your account and obtain your API Key.
 You can get it by signing up at [https://apiverve.com](https://apiverve.com)
 
 ---
 
-## Usage
+## Quick Start
 
-The Nobel Prizes API documentation is found here: [https://docs.apiverve.com/api/nobelprizes](https://docs.apiverve.com/api/nobelprizes).  
+[Get started with the Quick Start Guide](https://docs.apiverve.com/quickstart)
+
+The Nobel Prizes API documentation is found here: [https://docs.apiverve.com/ref/nobelprizes](https://docs.apiverve.com/ref/nobelprizes).
 You can find parameters, example responses, and status codes documented here.
 
 ### Setup
 
-```
-var nobelprizesAPI = require('@apiverve/nobelprizes');
-var api = new nobelprizesAPI({
-    api_key: [YOUR_API_KEY],
-    secure: true //(Optional, defaults to true)
+```javascript
+const nobelprizesAPI = require('@apiverve/nobelprizes');
+const api = new nobelprizesAPI({
+    api_key: '[YOUR_API_KEY]'
 });
 ```
 
 ---
 
+## Usage
+
+---
 
 ### Perform Request
-Using the API client, you can perform requests to the API.
 
-###### Define Query
+Using the API is simple. All you have to do is make a request. The API will return a response with the data you requested.
 
-```
+```javascript
 var query = {
   firstname: "Albert",
   lastname: "Einstein",
   category: "Physics",
   year: "1921"
 };
-```
 
-###### Simple Request (using Callback)
-
-```
 api.execute(query, function (error, data) {
     if (error) {
         return console.error(error);
@@ -67,9 +74,58 @@ api.execute(query, function (error, data) {
 });
 ```
 
-###### Example Response
+---
 
+### Using Promises
+
+You can also use promises to make requests. The API returns a promise that you can use to handle the response.
+
+```javascript
+var query = {
+  firstname: "Albert",
+  lastname: "Einstein",
+  category: "Physics",
+  year: "1921"
+};
+
+api.execute(query)
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.error(error);
+    });
 ```
+
+---
+
+### Using Async/Await
+
+You can also use async/await to make requests. The API returns a promise that you can use to handle the response.
+
+```javascript
+async function makeRequest() {
+    var query = {
+  firstname: "Albert",
+  lastname: "Einstein",
+  category: "Physics",
+  year: "1921"
+};
+
+    try {
+        const data = await api.execute(query);
+        console.log(data);
+    } catch (error) {
+        console.error(error);
+    }
+}
+```
+
+---
+
+## Example Response
+
+```json
 {
   "status": "ok",
   "error": null,
@@ -102,8 +158,7 @@ api.execute(query, function (error, data) {
         "organizationCountry": "Germany"
       }
     ]
-  },
-  "code": 200
+  }
 }
 ```
 
@@ -116,6 +171,7 @@ Need any assistance? [Get in touch with Customer Support](https://apiverve.com/c
 ---
 
 ## Updates
+
 Stay up to date by following [@apiverveHQ](https://twitter.com/apiverveHQ) on Twitter.
 
 ---
